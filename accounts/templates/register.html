@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <h2>Register</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    {% if referral_code %}
+      <div class="form-group">
+        <label for="id_referral_code">Referral code:</label>
+        <input type="text" name="referral_code" id="id_referral_code" class="form-control" value="{{ referral_code }}" readonly>
+      </div>
+    {% endif %}
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+{% endblock %}
